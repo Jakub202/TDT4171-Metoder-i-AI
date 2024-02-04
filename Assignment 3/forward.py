@@ -8,7 +8,7 @@ observation_matrices = {
 }
 initial_state_dist = np.array([0.5, 0.5])
 # In this case, '1' represents seeing the umbrella.
-evidence = [1, 1]
+evidence = [1, 1, 0, 1, 1]
 
 
 # Perform one step of the forward algorithm
