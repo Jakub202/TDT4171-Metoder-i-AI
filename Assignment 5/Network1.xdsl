@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Money_to_spend">
+			<state id="A_lot" />
+			<state id="Some" />
+			<state id="Little" />
+			<probabilities>0.1 0.2 0.7</probabilities>
+		</cpt>
+		<decision id="Node10">
+			<state id="Takeout" />
+			<state id="Making_at_Home" />
+			<state id="Pre_made" />
+		</decision>
+		<cpt id="Energy_after_eating">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Node10</parents>
+			<probabilities>0.25 0.5 0.25 0.7 0.2 0.1 0.1 0.3 0.6</probabilities>
+		</cpt>
+		<cpt id="Long_term_health">
+			<state id="Healthy" />
+			<state id="Neutral" />
+			<state id="Unhealthy" />
+			<parents>Node10</parents>
+			<probabilities>0.1 0.4 0.5 0.75 0.15 0.1 0 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Node9">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Node10</parents>
+			<probabilities>0 1 0.2 0.8 0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Impulsive_purchase">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Node9</parents>
+			<probabilities>0.2 0.8 0 1</probabilities>
+		</cpt>
+		<cpt id="Food_taste">
+			<state id="Good" />
+			<state id="Medium" />
+			<state id="Bad" />
+			<parents>Node10</parents>
+			<probabilities>0.4 0.4 0.2 0.3 0.5 0.2 0.1 0.8 0.1</probabilities>
+		</cpt>
+		<cpt id="Time_to_spend">
+			<state id="A_lot" />
+			<state id="Some" />
+			<state id="Little" />
+			<parents>Energy_after_eating</parents>
+			<probabilities>0.35 0.5 0.15 0.25 0.5 0.25 0.15 0.5 0.35</probabilities>
+		</cpt>
+		<cpt id="Time_cost">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Node10 Node9</parents>
+			<probabilities>0 0 1 0 0 1 0.5 0.5 0 0 0.5 0.5 0 1 0 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Time_Cost">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<parents>Time_cost Time_to_spend</parents>
+			<probabilities>0 1 0 0.5 0.5 0 1 0 0 0 0.5 0.5 0 1 0 0.5 0.5 0 0 0 1 0 0.5 0.5 0 1 0</probabilities>
+		</cpt>
+		<cpt id="Money_Cost">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Impulsive_purchase Node10</parents>
+			<probabilities>0.9 0.1 0 0.1 0.6 0.3 0.7 0.2 0.1 0.9 0.1 0 0.05 0.65 0.3 0.6 0.3 0.1</probabilities>
+		</cpt>
+		<cpt id="Money_Cost_2">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Money_Cost Money_to_spend</parents>
+			<probabilities>0 1 0 0.5 0.5 0 1 0 0 0 0.5 0.5 0 1 0 0.5 0.5 0 0 0 1 0 0.5 0.5 0 1 0</probabilities>
+		</cpt>
+		<cpt id="Time_and_money_Cost">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<parents>Time_Cost Money_Cost_2</parents>
+			<probabilities>1 0 0 0.5 0.5 0 0 1 0 0.5 0.5 0 0 1 0 0 0.5 0.5 0 1 0 0 0.5 0.5 0 0 1</probabilities>
+		</cpt>
+		<utility id="Utility">
+			<parents>Long_term_health Time_and_money_Cost Food_taste</parents>
+			<utilities>2.2 2.1 2 2.6 2.5 2.4 3 2.9 2.8 1.7 1.6 1.5 2.1 2 1.9 2.5 2.4 2.3 1.2 1.1 1 1.6 1.5 1.4 2 1.9 1.8</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3724.0 ACADEMIC" name="Network1">
+			<node id="Energy_after_eating">
+				<name>Energy after eating</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>793 372 1094 498</position>
+			</node>
+			<node id="Money_to_spend">
+				<name>Money to spend</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>1680 645 1996 771</position>
+				<barchart active="true" width="316" height="178" />
+			</node>
+			<node id="Long_term_health">
+				<name>Long term health</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>2086 95 2375 231</position>
+				<barchart width="338" height="218" />
+			</node>
+			<node id="Impulsive_purchase">
+				<name>Impulsive purchase</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>393 152 730 282</position>
+			</node>
+			<node id="Food_taste">
+				<name>Food taste</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>1816 330 2123 457</position>
+			</node>
+			<node id="Time_to_spend">
+				<name>Time to spend</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>666 587 986 715</position>
+				<barchart active="true" width="407" height="190" />
+			</node>
+			<node id="Node9">
+				<name>Going to Store</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>29 45 362 179</position>
+				<barchart active="true" width="292" height="161" />
+			</node>
+			<node id="Node10">
+				<name>Dinner Decision</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>961 42 1211 207</position>
+				<barchart active="true" width="349" height="158" />
+			</node>
+			<node id="Utility">
+				<name>Utility</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>2033 948 2457 1153</position>
+				<barchart active="true" width="452" height="242" />
+			</node>
+			<node id="Time_and_money_Cost">
+				<name>Time and money Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>459 977 841 1180</position>
+				<barchart active="true" width="452" height="214" />
+			</node>
+			<node id="Time_cost">
+				<name>Time spent making food</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>36 379 349 531</position>
+				<barchart active="true" width="342" height="208" />
+			</node>
+			<node id="Money_Cost">
+				<name>Money spent</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>1284 354 1646 524</position>
+			</node>
+			<node id="Money_Cost_2">
+				<name>Money Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>1129 626 1559 814</position>
+				<barchart active="true" width="402" height="196" />
+			</node>
+			<node id="Time_Cost">
+				<name>Time Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="22" />
+				<position>36 680 486 867</position>
+				<barchart active="true" width="434" height="244" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
