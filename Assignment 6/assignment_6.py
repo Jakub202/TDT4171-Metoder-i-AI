@@ -92,7 +92,7 @@ def learn_decision_tree(examples: np.ndarray, attributes: np.ndarray, parent_exa
     node.attribute = best_attr
     possible_values = (1,2)
     # iterate over the values of the best attribute and create a subtree for each value
-    for value in np.unique(examples[:, best_attr]):
+    for value in possible_values:
         subtree = learn_decision_tree(
             # examples where the best attribute is equal to the value
             examples[examples[:, best_attr] == value],
